@@ -1,0 +1,25 @@
+server:
+  port: 8082
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@DESKTOP-4CVQ2VN:1521/xepdb1
+    username: pblgllgs_user
+    password: Pblgllgs_123
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.OracleDialect
+        format_sql: true
+  application:
+    name: ORDERSERVICE
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
