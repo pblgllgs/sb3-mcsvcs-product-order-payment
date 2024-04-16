@@ -21,7 +21,7 @@ public class CustomDecoder implements ErrorDecoder {
         ObjectMapper mapper = new ObjectMapper();
         try {
             ErrorResponse errorResponse = mapper.readValue(response.body().asInputStream(), ErrorResponse.class);
-            return new OrderServiceCustomException(errorResponse.getMessage(), HttpStatus.NOT_FOUND);
+            return new OrderServiceCustomException(errorResponse.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         } catch (IOException e) {
             throw new OrderServiceCustomException("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR);
         }
