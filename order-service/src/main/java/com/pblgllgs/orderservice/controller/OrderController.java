@@ -7,14 +7,13 @@ package com.pblgllgs.orderservice.controller;
  */
 
 import com.pblgllgs.orderservice.dto.OrderRequest;
+import com.pblgllgs.orderservice.dto.OrderResponse;
+import com.pblgllgs.orderservice.entity.Order;
 import com.pblgllgs.orderservice.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,6 +25,16 @@ public class OrderController {
     @PostMapping("/place-order")
     public ResponseEntity<Long> createOrder(@RequestBody OrderRequest orderRequest){
         return new ResponseEntity<>(orderService.createOrder(orderRequest),HttpStatus.CREATED);
+    }
+
+    @GetMapping("/details/{orderId}")
+    public ResponseEntity<OrderResponse> getOrderDetails(@PathVariable("orderId") Long orderId){
+        return new ResponseEntity<>(orderService.getOrderDetails(orderId), HttpStatus.OK);
+    }
+
+    @GetMapping("/{orderId}")
+    public ResponseEntity<Order> getOrderById(@PathVariable("orderId") Long orderId){
+        return new ResponseEntity<>(orderService.getOrder(orderId), HttpStatus.OK);
     }
 
 }
