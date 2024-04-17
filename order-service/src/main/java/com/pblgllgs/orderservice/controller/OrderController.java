@@ -23,18 +23,17 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping("/place-order")
-    public ResponseEntity<Long> createOrder(@RequestBody OrderRequest orderRequest){
-        return new ResponseEntity<>(orderService.createOrder(orderRequest),HttpStatus.CREATED);
+    public ResponseEntity<Long> createOrder(@RequestBody OrderRequest orderRequest) {
+        return new ResponseEntity<>(orderService.createOrder(orderRequest), HttpStatus.CREATED);
     }
 
     @GetMapping("/details/{orderId}")
-    public ResponseEntity<OrderResponse> getOrderDetails(@PathVariable("orderId") Long orderId){
+    public ResponseEntity<OrderResponse> getOrderDetails(@PathVariable("orderId") Long orderId) {
         return new ResponseEntity<>(orderService.getOrderDetails(orderId), HttpStatus.OK);
     }
 
     @GetMapping("/{orderId}")
-    public ResponseEntity<Order> getOrderById(@PathVariable("orderId") Long orderId){
+    public ResponseEntity<Order> getOrderById(@PathVariable("orderId") Long orderId) {
         return new ResponseEntity<>(orderService.getOrder(orderId), HttpStatus.OK);
     }
-
 }

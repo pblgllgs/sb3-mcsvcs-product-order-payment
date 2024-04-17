@@ -7,6 +7,7 @@ public enum OrderStatus {
 
     CREATED("CREATED"),
     FAILED("FAILED"),
+    INCOMPLETE("INCOMPLETE"),
     COMPLETED("COMPLETED");
 
     private final String value;
